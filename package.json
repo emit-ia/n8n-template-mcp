@@ -1,0 +1,54 @@
+{
+  "name": "@emit-ia/n8n-template-mcp",
+  "version": "1.1.0",
+  "main": "build/index.js",
+  "type": "module",
+  "scripts": {
+    "init": "ts-patch install -s",
+    "build": "tsc && tsc-alias",
+    "dev": "concurrently \"tsc --watch\" \"npx -y @modelcontextprotocol/inspector node build/index.js\"",
+    "postbuild": "chmod +x build/index.js",
+    "start": "node build/index.js",
+    "prepublishOnly": "npm run build",
+    "test": "node --test build/**/*.test.js"
+  },
+  "bin": {
+    "n8n-template-mcp": "build/index.js"
+  },
+  "files": [
+    "build",
+    "README.md"
+  ],
+  "keywords": [
+    "n8n",
+    "templates",
+    "workflow",
+    "mcp",
+    "automation",
+    "model-context-protocol",
+    "n8n-templates"
+  ],
+  "author": "Igor Almeida <igor.almeida1993@gmail.com>",
+  "license": "MIT",
+  "description": "Model Context Protocol server for n8n templates - Enables AI agents to search, browse, and export n8n workflow templates via official APIs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emit-ia/n8n-template-mcp.git"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.6.0",
+    "quick-lru": "^7.0.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.22",
+    "concurrently": "^9.1.2",
+    "ts-patch": "^3.3.0",
+    "tsc-alias": "^1.8.11",
+    "typescript": "^5.8.2",
+    "typescript-transform-paths": "^3.5.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
